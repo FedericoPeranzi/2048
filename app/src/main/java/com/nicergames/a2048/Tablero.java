@@ -17,6 +17,10 @@ public class Tablero {
     private List<String> libres;
     private TextView[][] txt;
 
+    public boolean PosOk(int loc) {
+        return true;
+    }
+
     public Tablero() {
         this.tablero = new Ficha[4][4];
         this.posLibres = new int[4][4];
@@ -116,7 +120,7 @@ public class Tablero {
                 if (this.posLibres[i][j] == 1){
                     this.txt[i][j].setText(this.tablero[i][j].getValor()+"");
                 } else {
-                    this.txt[i][j].setText("*");
+                    this.txt[i][j].setText("");
                 }
             }
         }
@@ -136,11 +140,11 @@ public class Tablero {
                     if (act != null) { //si la posicion actual tiene ficha
                         //si ambas posiciones tiene ficha, verifico si tiene el mismo valor para sumarlos
                         if (act.getValor() == sig.getValor()){
-                            //TODO: verificar aca si tienen el flag de ya combinado
+                            //TODO: verificar aca si tienen el flag de ya convinado
 
                             //Setear el valor de la ficha actual con la suma de actual + siguiente
                             this.tablero[i][j].setValor(this.tablero[i][j].getValor() + this.tablero[posSig][j].getValor());
-                            //La posicion siguiente queda null porque fue combinada con la actual
+                            //La posicion siguiente queda null porque fue convinada con la actual
                             this.tablero[posSig][j] = null;
 
                             //Añadir a lista de posiciones libres el lugar de la ficha quitada (sig) (+1 todos)
@@ -178,54 +182,6 @@ public class Tablero {
     public void down(){
         int posSig, _i, _j, _pSig;
         Log.i("MOVIMIENTOS","DOWN");
-        
-        for (int j=0; j < this.tablero[0].length; j++) {
-            for (int i=0; i < this.tablero.length-1; i++) {
-                posSig = i+1; _i = i +1; _j = j + 1; _pSig = posSig+1;
-                Ficha sig = this.tablero[posSig][j];
-                Ficha act = this.tablero[i][j];
-                if (sig != null){ //si el proximo a la posicion actual tiene ficha
-                    if (act != null) { //si la posicion actual tiene ficha
-                        //si ambas posiciones tiene ficha, verifico si tiene el mismo valor para sumarlos
-                        if (act.getValor() == sig.getValor()){
-                            //TODO: verificar aca si tienen el flag de ya combinado
-
-                            //Setear el valor de la ficha actual con la suma de actual + siguiente
-                            this.tablero[i][j].setValor(this.tablero[i][j].getValor() + this.tablero[posSig][j].getValor());
-                            //La posicion siguiente queda null porque fue combinada con la actual
-                            this.tablero[posSig][j] = null;
-
-                            //Añadir a lista de posiciones libres el lugar de la ficha quitada (sig) (+1 todos)
-                            this.libres.add(_pSig+""+_j);
-                            this.libres.remove(_i+""+_j);
-
-                            //Actualizo posiciones ocupadas en la matriz
-                            this.posLibres[i][j]=1;
-                            this.posLibres[posSig][j]=0;
-                        } else { //si las fichas son de distinto valor, quedan en el lugar
-                            //this.tablero[i][j] = sig; //actual = siguiente
-                            //this.tablero[posSig][j] = null;
-                            //this.libres.add(_pSig+""+_j);
-                            //this.libres.remove(_i+""+_j);
-                            //this.posLibres[i][j]=1;
-                            //this.posLibres[posSig][j]=0;
-                        }
-
-                    } else {
-                        this.tablero[i][j] = sig; //actual = siguiente
-                        this.tablero[posSig][j] = null;
-                        this.libres.add(_pSig+""+_j);
-                        this.libres.remove(_i+""+_j);
-                        this.posLibres[i][j]=1;
-                        this.posLibres[posSig][j]=0;
-                    }
-
-                }
-
-            }
-        }
-        this.setFichaAleatoria();
-        this.actualizarTablero();
     }
     public void left(){
         Log.i("MOVIMIENTOS","LEFT");
