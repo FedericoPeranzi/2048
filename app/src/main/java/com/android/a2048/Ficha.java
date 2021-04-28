@@ -1,4 +1,4 @@
-package com.nicergames.a2048;
+package com.android.a2048;
 
 public class Ficha {
     //private int id; // posicion en la matriz

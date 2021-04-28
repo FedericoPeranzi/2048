@@ -1,4 +1,4 @@
-package com.nicergames.a2048;
+package com.android.a2048;
 
 import android.content.Context;
 
