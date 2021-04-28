@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="#303030">
+    android:gravity="center">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="300dp"
@@ -17,7 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#009688"
+            style="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:background="@drawable/round_btn"
             android:gravity="center"
             android:text="2048-BETA"
             android:textColor="#ffff"
@@ -25,11 +25,10 @@
             android:textSize="50dp"
             />
     </androidx.appcompat.widget.Toolbar>
-
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#2297FB"
+        android:background="@drawable/round_btn"
         android:id="@+id/button"
         android:text="Iniciar" />
 </LinearLayout>
