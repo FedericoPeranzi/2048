@@ -3,14 +3,12 @@ package com.android.a2048;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Juego extends AppCompatActivity {
-    private Button button;
+public class ActivityJuego extends AppCompatActivity {
 
     private TextView txt11,txt12,txt13,txt14,
             txt21,txt22,txt23,txt24,
@@ -19,9 +17,9 @@ public class Juego extends AppCompatActivity {
 
     private ImageView btnUp, btnDown, btnLeft, btnRight;
 
+    //private Button button;
+
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
@@ -35,7 +33,7 @@ public class Juego extends AppCompatActivity {
         txt41 = findViewById(R.id.c41); txt42 = findViewById(R.id.c42);
         txt43 = findViewById(R.id.c43); txt44 = findViewById(R.id.c44);
 
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(this);
 
         tablero.setComponentes(txt11, txt12, txt13, txt14,
                 txt21, txt22, txt23, txt24,
@@ -77,17 +75,22 @@ public class Juego extends AppCompatActivity {
                 tablero.right();
             }
         });
+
+
         // Se implementa el boton atras para volver al MainMenu
+        /*
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openMainActivity();
             }
         });
+        */
     }
+
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-        }
+}
 
